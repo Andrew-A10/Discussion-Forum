@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Home</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Forum</h1>
+        <a href="{{ url_for('new_post') }}">Create New Post</a>
+    </header>
+    <div class="post-list">
+        {% for post in posts %}
+            <div class="post-preview">
+                <h2><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></h2>
+                <p>By: {{ post.author }}</p>
+                <p>{{ post.content[:100] }}...</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
